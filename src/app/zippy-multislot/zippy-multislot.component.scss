@@ -1,0 +1,245 @@
+.main {
+  width: 100%;
+}
+.toolbar {
+  display: flex;
+  height: 48px;
+  justify-content: flex-end;
+}
+
+.example-button-row {
+  display: table-cell;
+}
+
+.button {
+  height: 40px;
+  font-size: 12px;
+  padding-top: 0;
+  padding-bottom: 0;
+  text-align: center;
+}
+
+.summary {
+  min-height: 50px;
+  background-color: white;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.header {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 5px 0px 0px 5px;
+}
+.sub-header {
+  font-size: 10px;
+  margin: 0px 0px 25px 5px;
+}
+.footer {
+  font-size: 15px;
+  margin: 0px 0px 10px 5px;
+}
+.filter {
+  min-height: 50px;
+  background-color: white;
+  border-radius: 4px;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.logs-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  //margin-left: 56px;
+  flex-direction: column;
+
+  @media screen and(max-width:768px) {
+    margin-left: 24px;
+    margin-right: 24px;
+  }
+
+  @media screen and(min-width:768px) {
+    margin-left: 106px;
+    margin-right: 106px;
+  }
+
+  &__exception {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    align-self: flex-start;
+  }
+
+  &__title.mat-display-1 {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+    color: #333333;
+    padding-bottom: 12px;
+    width: 100%;
+    background-color: white;
+    padding-top: 48px;
+    margin: 0;
+  }
+
+  &__header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    // margin-top: 10px;
+    font-size: 15px;
+    // margin-left: 12px;
+    padding-bottom: 16px;
+    background-color: white;
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+
+    @media screen and(max-width:768px) {
+      tr:first-child {
+        border-top: 2px #000;
+        border-top-style: solid;
+      }
+    }
+
+    &.mat-table {
+      font-size: 12px;
+
+      .mat-header-row {
+        border-top: 2px solid #000;
+
+        th.mat-header-cell {
+          font-size: 12px;
+          text-transform: uppercase;
+          color: #000000;
+          font-weight: bold;
+          border-color: #000000;
+
+          .mat-sort-header-button {
+            text-transform: uppercase;
+          }
+        }
+
+        @media screen and(max-width:768px) {
+          display: none;
+        }
+      }
+
+      .mat-row {
+        td.mat-cell {
+          font-size: 12px;
+        }
+      }
+
+      th.mat-header-cell:first-of-type,
+      td.mat-cell:first-of-type {
+        padding-left: 8px;
+      }
+
+      &:not(.table-no-responsive) {
+        th:not(.mat-column-responsive),
+        td:not(.mat-column-responsive) {
+          display: none;
+
+          @media screen and(min-width:768px) {
+            display: table-cell;
+          }
+        }
+
+        th.mat-column-responsive {
+          display: none;
+        }
+
+        thead {
+          display: none;
+
+          @media screen and(min-width:768px) {
+            display: table-row-group;
+          }
+        }
+      }
+
+      .mat-column-responsive {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 8px;
+
+        @media screen and(min-width:768px) {
+          display: none;
+        }
+
+        &__field {
+          flex: 0 0 50%;
+        }
+
+        &__label {
+          font-weight: bold;
+          margin-right: 4px;
+        }
+      }
+
+      tr {
+        .mat-column-responsive {
+          font-size: 14px;
+
+          &__field {
+            flex: 1 1 100%;
+            display: flex;
+            padding: 5px;
+          }
+
+          &__label {
+            font-weight: bold;
+            flex: 1 1;
+          }
+
+          &__value {
+            flex: 1 1;
+          }
+
+          &__value {
+            overflow-wrap: anywhere;
+            word-break: break-word;
+          }
+        }
+      }
+
+      th.mat-header-cell,
+      td.mat-cell,
+      td.mat-footer-cell {
+        // border-bottom-width: 1.5px;
+        // border-bottom-style: groove;
+        // border-bottom-color: #f2f2f2;
+      }
+
+      .footer-desktop {
+        display: none;
+
+        @media screen and(min-width:768px) {
+          display: table-row;
+          background-color: #f2f2f2;
+          border-bottom: 2px solid #333333;
+        }
+      }
+
+      .footer-mobile {
+        display: none;
+
+        @media screen and(max-width:768px) {
+          display: table-row;
+          background-color: #f2f2f2;
+          border-bottom: 2px solid #333333;
+        }
+      }
+    }
+  }
+}

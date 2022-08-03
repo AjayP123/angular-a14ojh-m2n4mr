@@ -1,0 +1,52 @@
+<table mat-table [dataSource]="transactions" class="mat-elevation-z8">
+  <!-- Item Column -->
+  <ng-container matColumnDef="item">
+    <th mat-header-cell *matHeaderCellDef>Item</th>
+    <td mat-cell *matCellDef="let transaction">{{ transaction.item }}</td>
+    <td mat-footer-cell *matFooterCellDef>Total</td>
+  </ng-container>
+  <!-- Cost Column -->
+  <ng-container matColumnDef="cost">
+    <th mat-header-cell *matHeaderCellDef>Cost</th>
+    <td mat-cell *matCellDef="let transaction">
+      {{ transaction.cost | currency }}
+    </td>
+    <td mat-footer-cell *matFooterCellDef>{{ getTotalCost() | currency }}</td>
+  </ng-container>
+  <ng-container matColumnDef="cost1">
+    <th mat-header-cell *matHeaderCellDef>Cost</th>
+    <td mat-cell *matCellDef="let transaction">
+      {{ transaction.cost | currency }}
+    </td>
+    <td mat-footer-cell *matFooterCellDef>{{ getTotalCost() | currency }}</td>
+  </ng-container>
+  <ng-container matColumnDef="cost2">
+    <th mat-header-cell *matHeaderCellDef>Cost</th>
+    <td mat-cell *matCellDef="let transaction">
+      {{ transaction.cost | currency }}
+    </td>
+    <td mat-footer-cell *matFooterCellDef>{{ getTotalCost() | currency }}</td>
+  </ng-container>
+  <ng-container matColumnDef="cost3">
+    <th mat-header-cell *matHeaderCellDef>Cost</th>
+    <td mat-cell *matCellDef="let transaction">
+      {{ transaction.cost | currency }}
+    </td>
+    <td mat-footer-cell *matFooterCellDef>{{ getTotalCost() | currency }}</td>
+  </ng-container>
+  <tr
+    mat-header-row
+    *matHeaderRowDef="displayedColumns"
+    class="example-first-header-row"
+  ></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  <tr
+    mat-footer-row
+    *matFooterRowDef="displayedColumns"
+    class="example-first-footer-row"
+  ></tr>
+</table>
+
+<!-- Copyright 2022 Google LLC. All Rights Reserved.
+  Use of this source code is governed by an MIT-style license that
+  can be found in the LICENSE file at https://angular.io/license -->

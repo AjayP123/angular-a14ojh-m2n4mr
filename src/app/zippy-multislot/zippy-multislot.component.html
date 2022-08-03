@@ -1,0 +1,164 @@
+<div class="main">
+  <div class="logs-list" *ngFor="let table of dataSource.Sections; index as i">
+    <!-- <mat-toolbar class="toolbar">
+      <div>
+        <button mat-button class="button">Export Csv</button>
+      </div>
+    </mat-toolbar> -->
+    <!-- <div class="summary">
+      <div class="header">EV Summary</div>
+      <div class="sub-header">Created : 10 june 2022 08:50:11</div>
+      <div class="footer">Reports Total For : 05/06/2022-06/06/2022</div>
+    </div> -->
+    <span class="logs-list__title mat-display-1">{{
+      table.Header.ItemName
+    }}</span>
+    <table mat-table class="logs-list__table" [dataSource]="table.Tables">
+      <ng-container
+        *ngFor="let data of columsHeading"
+        matColumnDef="{{ data }}"
+      >
+        <th scope="col" mat-header-cell *matHeaderCellDef>
+          {{ data }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element[data] }}
+        </td>
+        <td mat-footer-cell *matFooterCellDef>Total</td>
+      </ng-container>
+
+      <!-- <ng-container matColumnDef="total">
+        <td
+          mat-footer-cell
+          *matFooterCellDef="let element"
+          class="mat-column-responsive"
+        >
+          <div class="footer-header">Total</div>
+          <div class="mat-column-responsive__field">
+            <label for="auditEventType" class="mat-column-responsive__label"
+              >Total Charging <br />
+              duration</label
+            >
+            <span class="mat-column-responsive__value">{{
+              getTotal(i, 'Total Charging Duration')
+            }}</span>
+          </div>
+          <div class="mat-column-responsive__field">
+            <label for="serialNumber" class="mat-column-responsive__label"
+              >Charging <br />
+              location</label
+            >
+            <span class="mat-column-responsive__value">{{
+              getTotal(i, 'Charging Location')
+            }}</span>
+          </div>
+          <div class="mat-column-responsive__field">
+            <label for="createdBy" class="mat-column-responsive__label"
+              >Distance Since <br />Last Charge</label
+            >
+            <span class="mat-column-responsive__value"
+              >{{ getTotal(i, 'Distance Since Last Charge') }}
+            </span>
+          </div>
+          <div class="mat-column-responsive__field">
+            <label for="createdBy" class="mat-column-responsive__label"
+              >Assigned Driver</label
+            >
+            <span class="mat-column-responsive__value"
+              >{{ getTotal(i, 'Assigned Driver') }}
+            </span>
+          </div>
+        </td>
+      </ng-container> -->
+
+      <!-- <ng-container matColumnDef="responsive">
+        <th scope="col" mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <div class="mat-column-responsive__field">
+            <label for="auditEventType" class="mat-column-responsive__label"
+              >Start Date <br />
+              End Date</label
+            >
+            <span class="mat-column-responsive__value"
+              >{{ element.StartDate }}<br />{{ element.EndDate }}</span
+            >
+          </div>
+          <div class="mat-column-responsive__field">
+            <label for="serialNumber" class="mat-column-responsive__label"
+              >Start Time <br />
+              End Time</label
+            >
+            <span class="mat-column-responsive__value"
+              >{{ element.StartTime }}<br />{{ element.EndTime }}
+            </span>
+          </div>
+          <div class="mat-column-responsive__field">
+            <label for="createdBy" class="mat-column-responsive__label"
+              >Battery Start <br />
+              Battery End</label
+            >
+            <span class="mat-column-responsive__value"
+              >{{ element.BatteryStart }} <br />
+              {{ element.BatteryEnd }}
+            </span>
+          </div>
+          <div class="mat-column-responsive__field">
+            <label for="createdBy" class="mat-column-responsive__label"
+              >Total Charging <br />
+              Duration</label
+            >
+            <span class="mat-column-responsive__value"
+              >{{ element.TotalChargingDuration }}
+            </span>
+          </div>
+          <div class="mat-column-responsive__field">
+            <label for="createdBy" class="mat-column-responsive__label"
+              >Charging Location</label
+            >
+            <span class="mat-column-responsive__value"
+              >{{ element.ChargingLocation }}
+            </span>
+          </div>
+          <div class="mat-column-responsive__field">
+            <label for="createdBy" class="mat-column-responsive__label"
+              >Distance Since Last <br />
+              Charge</label
+            >
+            <span class="mat-column-responsive__value"
+              >{{ element.DistanceSinceLastCharged }}
+            </span>
+          </div>
+          <div class="mat-column-responsive__field">
+            <label for="createdBy" class="mat-column-responsive__label"
+              >Assigned Driver</label
+            >
+            <span class="mat-column-responsive__value"
+              >{{ element.Type }}
+            </span>
+          </div>
+        </td>
+        <td mat-footer-cell *matFooterCellDef></td>
+      </ng-container> -->
+      <tr mat-header-row *matHeaderRowDef="columsHeading"></tr>
+      <tr mat-row *matRowDef="let row; columns: columsHeading"></tr>
+      <tr
+        mat-footer-row
+        *matFooterRowDef="columsHeading"
+        class="footer-desktop"
+      ></tr>
+      <!-- <tr
+        mat-footer-row
+        *matFooterRowDef="['total']"
+        class="footer-mobile"
+      ></tr> -->
+    </table>
+    <div class="logs-list__exception">
+      <span>*</span>
+      <span
+        >Indicates the vehicle was charging outside the generated report
+        times.</span
+      >
+      <div></div>
+    </div>
+  </div>
+</div>
