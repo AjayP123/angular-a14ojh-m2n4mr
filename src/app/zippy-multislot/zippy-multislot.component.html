@@ -18,15 +18,28 @@
         *ngFor="let data of columsHeading"
         matColumnDef="{{ data }}"
       >
-        <th scope="col" mat-header-cell *matHeaderCellDef>
-          {{ data }}
-        </th>
-        <td mat-cell *matCellDef="let element">
-          {{ element[data] }}
-        </td>
-        <td mat-footer-cell *matFooterCellDef>
-          {{ getTotal(i, data) }}
-        </td>
+        <ng-container *ngIf="data != 'responsive'">
+          <th scope="col" mat-header-cell *matHeaderCellDef>
+            {{ data }}
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element[data] }}
+          </td>
+        </ng-container>
+        <ng-container *ngIf="data == 'responsive'">
+          <th scope="col" mat-header-cell *matHeaderCellDef></th>
+          <ng-container *ngFor="let datas of columsHeading">
+            <td mat-cell *matCellDef="let element">
+              <div class="mat-column-responsive__field">
+                <label class="mat-column-responsive__label">{{ datas }}</label>
+                <span class="mat-column-responsive__value">{{
+                  element[datas]
+                }}</span>
+              </div>
+            </td>
+          </ng-container>
+        </ng-container>
+        <td mat-footer-cell *matFooterCellDef>{{ getTotal(i, data) }}</td>
       </ng-container>
 
       <!-- <ng-container matColumnDef="total">
@@ -75,70 +88,16 @@
 
       <!-- <ng-container matColumnDef="responsive">
         <th scope="col" mat-header-cell *matHeaderCellDef></th>
-        <td mat-cell *matCellDef="let element">
-          <div class="mat-column-responsive__field">
-            <label for="auditEventType" class="mat-column-responsive__label"
-              >Start Date <br />
-              End Date</label
-            >
-            <span class="mat-column-responsive__value"
-              >{{ element.StartDate }}<br />{{ element.EndDate }}</span
-            >
-          </div>
-          <div class="mat-column-responsive__field">
-            <label for="serialNumber" class="mat-column-responsive__label"
-              >Start Time <br />
-              End Time</label
-            >
-            <span class="mat-column-responsive__value"
-              >{{ element.StartTime }}<br />{{ element.EndTime }}
-            </span>
-          </div>
-          <div class="mat-column-responsive__field">
-            <label for="createdBy" class="mat-column-responsive__label"
-              >Battery Start <br />
-              Battery End</label
-            >
-            <span class="mat-column-responsive__value"
-              >{{ element.BatteryStart }} <br />
-              {{ element.BatteryEnd }}
-            </span>
-          </div>
-          <div class="mat-column-responsive__field">
-            <label for="createdBy" class="mat-column-responsive__label"
-              >Total Charging <br />
-              Duration</label
-            >
-            <span class="mat-column-responsive__value"
-              >{{ element.TotalChargingDuration }}
-            </span>
-          </div>
-          <div class="mat-column-responsive__field">
-            <label for="createdBy" class="mat-column-responsive__label"
-              >Charging Location</label
-            >
-            <span class="mat-column-responsive__value"
-              >{{ element.ChargingLocation }}
-            </span>
-          </div>
-          <div class="mat-column-responsive__field">
-            <label for="createdBy" class="mat-column-responsive__label"
-              >Distance Since Last <br />
-              Charge</label
-            >
-            <span class="mat-column-responsive__value"
-              >{{ element.DistanceSinceLastCharged }}
-            </span>
-          </div>
-          <div class="mat-column-responsive__field">
-            <label for="createdBy" class="mat-column-responsive__label"
-              >Assigned Driver</label
-            >
-            <span class="mat-column-responsive__value"
-              >{{ element.Type }}
-            </span>
-          </div>
-        </td>
+        <ng-container *ngFor="let datam of columsHeading">
+          <td mat-cell *matCellDef="let element">
+            <div class="mat-column-responsive__field">
+              <label class="mat-column-responsive__label">{{ datam }}</label>
+              <span class="mat-column-responsive__value">{{
+                element[datam]
+              }}</span>
+            </div>
+          </td>
+        </ng-container>
         <td mat-footer-cell *matFooterCellDef></td>
       </ng-container> -->
       <tr mat-header-row *matHeaderRowDef="columsHeading"></tr>

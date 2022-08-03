@@ -37,11 +37,10 @@ export class ZippyMultislotComponent {
   ];
   totalColumns = ['total'];
   getTotal(index: number, totalParameter: string, element?: any) {
-    console.log(element);
+    console.log(totalParameter);
     return this.dataSource.Sections[index].Footer.filter(
-      (f: any) => f.Type === totalParameter
-    )[0].Value;
-    return 2;
+      (f: any) => f.Type.replace(/\s/g, '') === totalParameter
+    )[0]?.Value;
   }
   public auditLogs = [
     { auditEventType: '06/07/2022', serialNumber: 1, createdBy: 'test_a' },
